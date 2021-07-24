@@ -1,0 +1,17 @@
+{
+    "pg_params": {
+        "HOST": "localhost",
+        "PORT": "5432",
+        "DATABASE": "postgres",
+        "USER": "postgres",
+        "PASSWORD": "admin"
+    },
+    "es_params": {
+        "HOST": "localhost",
+        "PORT": "9200",
+        "USER": "",
+        "PASSWORD": "",
+        "INDEX": "pd_activity"
+
+    }
+}
