@@ -1,7 +1,7 @@
 # postgres-elastic
 INFO:: Provides facility to perform multiple operation between Postgres (PG) and Elasticsearch (ES)
 
-Prerequisite:: You need to fill up config.json with your PG & ES details
+PREREQUISITE:: You need to fill up config.json with your PG & ES details
 
 HOW TO RUN:: Select mode you want to perform operation as mentioned below
 
