@@ -4,14 +4,15 @@
         "PORT": "5432",
         "DATABASE": "postgres",
         "USER": "postgres",
-        "PASSWORD": "admin"
+        "PASSWORD": "admin",
+        "TABLE": "pd_activity_copy"
     },
     "es_params": {
         "HOST": "localhost",
         "PORT": "9200",
         "USER": "",
         "PASSWORD": "",
-        "INDEX": "pd_activity"
+        "INDEX": "pd_activity_copy"
 
     }
 }
