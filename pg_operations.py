@@ -24,7 +24,8 @@ class PG_Operate:
             count = cur.rowcount
             records = []
             while True:
-                record = cur.fetchmany(size=2)
+                record = cur.fetchmany(size=1)
+                # TODO: enhance code for size 1000
                 records.append(record)
                 if not record:
                     print("DEBUG :: End of fetching records at PG, Total count :",count)
@@ -42,7 +43,7 @@ class PG_Operate:
                 values = tuple(docs[doc]['_source'].values())
                 cur.execute(f'INSERT INTO {table} ({",".join(columns)}) VALUES ({"%s,"*(len(columns)-1)} %s);', values)
                 temp += 1
-                if temp-count>=2:
+                if temp-count>=10:
                     count=temp
                     print("DEBUG :: Inserted records count :", count)
             print("RESULT :: Total inserted records in PG :",temp)

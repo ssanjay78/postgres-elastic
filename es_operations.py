@@ -28,16 +28,31 @@ class ES_Operate:
         docs = self.es_conn.search(index=self.index, body=seacrh_query)
         return docs['hits']['hits']
 
-    def delete_doc(self):
+    def insert_docs(self, result, columns, count):
+        check = temp = 0
+        for j in range(count):
+            try:
+                doc = {columns[i]:result[j][0][i] for i in range(len(columns))}
+                self.es_conn.index(index=self.index, body=doc)
+                temp += 1
+                if temp-check>=10:
+                    check=temp
+                    print("DEBUG :: Inserted records count :", check)
+            except IndexError:
+                continue
+        print("RESULT :: Total inserted records in PG :",temp)
+
+    def delete_docs(self):
         count = 0
         del_query = {
             "query": {
-                "match": {"dob":'null'}
+                "match_all": {}
             }
         }
         result = self.es_conn.delete_by_query(index=self.index, body=del_query)
 
+        '''Delete by ID'''
         # for i in range(len(doc)):
         #     res = self.es_conn.delete(index=self.index, id=doc[i]['name'])
             # count += bool(res['result']=='deleted')
-        print(result)
+        return result
